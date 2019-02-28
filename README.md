@@ -4,7 +4,7 @@ Tool to access AWS CLI via Okta SSO, using either account-level MFA or app-level
 
 This tool works with Python 2.7 and 3.6 on Windows and Linux/Mac, install the necessary libraries per requirements.txt (sudo pip install -r requirements.txt).
 
-Make sure the provided 'oktacli' config file exists as ~/.aws/oktacli. You'll have to create profiles for each of your accounts, following the sample format present in the file. Add as many accounts as needed. 
+Make sure the provided 'oktacli' config file exists as ~/.aws/oktacli. You'll have to create profiles for each of your accounts, following the sample format present in the file. Add as many accounts as needed. Also make sure to verify the two URLs in the config file (API and SAML). Grab the SAML URL from your Okta setup by doing a debug session on the browser.
 
 Current supported MFA modes are:
 - OKTA / TOTP
