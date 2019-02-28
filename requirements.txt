@@ -1,0 +1,6 @@
+boto3 >= 1.4.4
+requests >= 2.10.0
+beautifulsoup4 >= 4.6.0
+configparser >= 3.5.0
+awscli >=1.14.0
+keyring >=11.0.0
