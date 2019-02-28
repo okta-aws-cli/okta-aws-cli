@@ -119,7 +119,7 @@ if os.name == 'nt':
 else:
     username = os.environ['USER']
     basepath = os.environ['HOME']
-    
+
 password = get_password(username)
 
 cli_config_file = basepath + "/.aws/oktacli"
@@ -142,7 +142,7 @@ else:
     print("AWS config file not found, please create one with the appropriate profiles")
     sys.exit(1)
 
-if config['user']['user_name']:
+if config.has_section('user'):
     username = config['user']['user_name']
 
 if config['URL']['api']:
