@@ -142,8 +142,6 @@ else:
     print("AWS config file not found, please create one with the appropriate profiles")
     sys.exit(1)
 
-# Override the username if we have a different username present
-# in the config file. Required by users in Roadster.
 if config['user']['user_name']:
     username = config['user']['user_name']
 
