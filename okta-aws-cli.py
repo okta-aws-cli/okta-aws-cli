@@ -20,7 +20,7 @@ if not len(sys.argv) > 1:
 
 display_head = os.getenv('SSH_CONNECTION')
 headless_mode = True
-if (display_head is not None and display_head or os.name == 'nt'):
+if (not display_head or os.name == 'nt'):
     import keyring
     headless_mode = False
 
