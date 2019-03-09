@@ -152,7 +152,7 @@ else:
     sys.exit(1)
 
 if config.has_section['URL']['SAML']:
-    SAMLurl = config['URL']['SAML']
+    samlUrl = config['URL']['SAML']
 else:
     print("SAML URL not defined, check your config...")
     sys.exit(1)
@@ -174,7 +174,7 @@ oktasession = requests.Session()
 url = apiUrl + "/authn"
 payload['username'] = username
 payload['password'] = password
-payload['relayState'] = SAMLurl
+payload['relayState'] = samlUrl
 
 login = oktasession.post(url, headers=headers, data=json.dumps(payload))
 
@@ -198,7 +198,7 @@ elif status != 'SUCCESS':
     print("Unknown error, please retry.")
     sys.exit(1)
 
-url = baseUrl + "/login/sessionCookieRedirect?checkAccountSetupComplete=true&token=" + sessionToken + "&redirectUrl=" + SAMLurl
+url = baseUrl + "/login/sessionCookieRedirect?checkAccountSetupComplete=true&token=" + sessionToken + "&redirectUrl=" + samlUrl
 ckstatus = oktasession.get(url, data=json.dumps(payload), headers=headers)
 regex = "((?<=stateToken = \\')\S+(?=\\'))"
 match = re.search(regex, ckstatus.text)
@@ -218,9 +218,9 @@ elif response['status'] == "MFA_REQUIRED":
     do_mfa(response, payload, stateToken)
 
 payload = {'stateToken': stateToken}
-url = baseUrl + "/login/sessionCookieRedirect?checkAccountSetupComplete=true&token=" + sessionToken + "&redirectUrl=" + SAMLurl
+url = baseUrl + "/login/sessionCookieRedirect?checkAccountSetupComplete=true&token=" + sessionToken + "&redirectUrl=" + samlUrl
 mytest = oktasession.get(url)
-sso = oktasession.get(SAMLurl, cookies=cookieJar, headers=headers)
+sso = oktasession.get(samlUrl, cookies=cookieJar, headers=headers)
 soup = BeautifulSoup(sso.text, "html.parser")
 for inputtag in soup.find_all('input'):
     if inputtag.get('name') == 'SAMLResponse':
