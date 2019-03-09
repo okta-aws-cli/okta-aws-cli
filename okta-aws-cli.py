@@ -18,7 +18,7 @@ if not len(sys.argv) > 1:
     print("You forgot to specify a profile. Try again.")
     sys.exit(1)
 
-display_head = os.getenv('DISPLAY')
+display_head = os.getenv('SSH_CONNECTION')
 headless_mode = True
 if (display_head is not None and display_head or os.name == 'nt'):
     import keyring

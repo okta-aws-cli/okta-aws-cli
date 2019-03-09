@@ -1,6 +1,6 @@
 # okta-aws-cli
 
-Tool to access AWS CLI via Okta SSO, using either account-level MFA or app-level MFA, with chained roles through ledger account.
+Tool to access AWS CLI via Okta SSO, using either account-level MFA or app-level MFA, with chained roles through a managing account.
 
 This tool works with Python 2.7 and 3.6 on Windows and Linux/Mac, install the necessary libraries per requirements.txt (sudo pip install -r requirements.txt).
 
