@@ -145,14 +145,14 @@ else:
 if config.has_section('user'):
     username = config['user']['user_name']
 
-if config['URL']['api']:
+if config.has_section['URL']['api']:
     apiUrl = config['URL']['api']
 else:
     print("API URL not defined, check your config...")
     sys.exit(1)
 
-if config['URL']['SAML']:
-    apiUrl = config['URL']['SAML']
+if config.has_section['URL']['SAML']:
+    SAMLurl = config['URL']['SAML']
 else:
     print("SAML URL not defined, check your config...")
     sys.exit(1)
